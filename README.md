@@ -48,3 +48,6 @@ Security is an important aspect of our application, for this:
 
 6. Run the frontend
    `cd client && npm run dev`
+
+<img width="1228" alt="Screenshot 2024-09-09 at 11 00 32 PM" src="https://github.com/user-attachments/assets/bc6e7429-d6be-477b-b52d-644a14e3a0f3">
+<img width="1220" alt="Screenshot 2024-09-09 at 11 01 24 PM" src="https://github.com/user-attachments/assets/199d129d-1f85-4042-9f56-f3e14af11819">
