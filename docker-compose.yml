@@ -13,29 +13,12 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  # app:
-  #   build: .
-  #   container_name: node_app
-  #   depends_on:
-  #     - db
-  #   ports:
-  #     - "3000:3000"
-  #   environment:
-  #     DATABASE_URL: postgres://user:password@db:5432/flights
-  #   command: ["ts-node", "src/index.ts"]
-
   redis:
     container_name: redis
     image: redis:7.2-alpine
     restart: unless-stopped
     ports:
       - 6377:6379
-    # networks:
-    #   - app
-
-# networks:
-#   app:
-#     driver: bridge
 
 volumes:
   postgres_data:

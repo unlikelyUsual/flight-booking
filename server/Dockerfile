@@ -23,4 +23,4 @@ RUN tsc
 EXPOSE 3000
 
 # Command to run the app
-CMD [ "node", "dist/index.js" ]
+CMD [ "ts-node", "index.ts" ]

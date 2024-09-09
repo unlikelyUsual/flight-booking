@@ -8,8 +8,8 @@
     "dev": "ts-node index.ts",
     "prestart": "npm run build",
     "push": "npx drizzle-kit push",
-    "gen": "npx drizzle-kit generate",
-    "mig": "npx drizzle-kit migrate",
+    "generate": "npx drizzle-kit generate",
+    "migrate": "npx drizzle-kit migrate",
     "studio": "npx drizzle-kit studio",
     "seed": "npx ts-node db/seed.ts"
   },
