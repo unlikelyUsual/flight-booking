@@ -3,6 +3,11 @@
 This is an application developed using TypeScript version 5.5.4. It requires Node.js to run and uses
 NPM (Node package manager) for package management.
 
+### Completion
+
+1. Backend : ✅
+2. Frontend : 50 %
+
 ## Tech Stack
 
 - Server : Node runtime with express server : Node.js is excellent for flight booking apps due to its non-blocking, asynchronous architecture, which efficiently handles high concurrency and real-time data updates
