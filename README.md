@@ -5,32 +5,20 @@ NPM (Node package manager) for package management.
 
 ## Tech Stack
 
-- TypeScript
-- Express
-- Redis
-- Passport and passport-jwt
-- bcrypt
-- pg and postgres
-- Drizzle kit
-- Zod
-- Cors
-- Faker
+- Server : Node runtime with express server : Node.js is excellent for flight booking apps due to its non-blocking, asynchronous architecture, which efficiently handles high concurrency and real-time data updates
+- Database : Postgres : For handling scale due to its advanced indexing and query optimization features. Its support for complex queries and transactions, combined with robust data integrity and replication capabilities, make it well-suited for high-traffic and large-scale applications.
+- Front End : ReactJS with Vite: React with Vite offers rapid development and build times due to Vite's lightning-fast hot module replacement and optimized bundling.
 
 ## Backend Security:
 
 Security is an important aspect of our application, for this:
 
-- **bcrypt**: We use bcrypt to hash passwords, a well-tested library to ensure the safety of user
-  passwords.
-- **Passport for Authentication**: To make sure only allowed users can access certain routes.
-- **jsonwebtoken**: We use the jsonwebtoken library to create JWTs (Json Web Tokens) for a secure
-  way of transmitting information.
-- **Helmet**: We use the Helmet middleware to secure Express apps by setting various HTTP headers.
-- **Rate Limiting**: This ensures a certain mount of request can be made from an IP, and it's useful
-  to defend against brute-force attacks.
-- **express-validator for Validation**: Validation of data before it reaches your server is very
-  important to prevent malicious data entering your app and could potentially crash or worse, allow
-  a data breach.
+- **bcrypt**: Password encryption.
+- **Passport for Authentication**: Role based authentication
+- **jsonwebtoken**: JWT token creation and verification
+- **Helmet**: Secure Express apps by setting various HTTP headers.
+- **Rate Limiting**: Defend against brute-force attacks
+- **Cors**: Allowing know origins.
 
 ## Installation
 
@@ -38,15 +26,20 @@ Security is an important aspect of our application, for this:
 
 ## Running the application
 
-1. Start the docker container for redis, postgres
-   `npm start`
+1. Use the .env.example file as .env to run locally
 
-2. Run the drizzle migration and push to db
+2. Start the docker container for redis, postgres
+   `docker-compose up -d`
+
+3. Run the drizzle migration and push to db
    `npm run generate` &
    `npm run migrate`
 
-3. Seed the database
+4. Seed the database
    `npm run seed`
 
-4. Run the server
+5. Run the server
    `npm run dev`
+
+6. Run the frontend
+   `cd client && npm run dev`
