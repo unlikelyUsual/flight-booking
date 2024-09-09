@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: flights
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./data.sql:/docker-entrypoint-initdb.d/init.sql
+
+  # app:
+  #   build: .
+  #   container_name: node_app
+  #   depends_on:
+  #     - db
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     DATABASE_URL: postgres://user:password@db:5432/db
+  #   command: ["ts-node", "src/index.ts"]
+
+  redis:
+    container_name: redis
+    image: redis:7.2-alpine
+    restart: unless-stopped
+    ports:
+      - 6377:6379
+    # networks:
+    #   - app
+
+volumes:
+  postgres_data:
