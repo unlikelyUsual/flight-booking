@@ -1,9 +1,9 @@
 export type {
+  BookedFlights,
+  EmergencyInfo,
   Flight,
   FlightSearchValues,
   Passenger,
-  EmergencyInfo,
-  BookedFlights,
 };
 
 interface Flight {
@@ -60,4 +60,15 @@ interface BookedFlights {
   passengers?: Passenger[];
   emergency?: EmergencyInfo;
   bags?: number[];
+}
+
+export interface TFlight {
+  id: string;
+  airline: string;
+  origin: string;
+  destination: string;
+  departure: string;
+  arrival: string;
+  price: number;
+  availableSeats: number;
 }

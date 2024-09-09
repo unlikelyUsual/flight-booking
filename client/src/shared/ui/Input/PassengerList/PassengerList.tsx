@@ -1,9 +1,9 @@
+import useFocusOut from "@hooks/useFocusOut";
+import clsx from "clsx";
 import { FC, useRef, useState } from "react";
 import { TextField } from "..";
 import { Count } from "../Count/Count";
-import useFocusOut from "@hooks/useFocusOut";
 import "./PassengerList.scss";
-import clsx from "clsx";
 interface PassengerListProps extends React.HTMLAttributes<HTMLDivElement> {
   value?: { adults: number; minors: number };
   getValue?: (value: { adults: number; minors: number }) => void;
@@ -71,11 +71,6 @@ export const PassengerList: FC<PassengerListProps> = ({
           name="adults"
           value={value?.adults}
           getNewValue={(val) => handleChange("adults", val)}
-        />
-        <Count
-          name="minors"
-          value={value?.minors}
-          getNewValue={(val) => handleChange("minors", val)}
         />
       </div>
     </div>

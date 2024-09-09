@@ -5,8 +5,8 @@ export const FlightHero = () => {
   return (
     <div className={styles.hero}>
       <p className={styles["hero-text"]}>
-        Book with us
-        <br /> just a trip
+        Book Your
+        <br /> Dream Trip
       </p>
       <FlightSearchBar />
     </div>

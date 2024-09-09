@@ -50,7 +50,7 @@ export const FlightSearchBar: FC<FlightSearchBarProps> = ({
           placeholder={"From where?"}
           getSelected={(selected) => formik.setFieldValue("from", selected)}
           value={formik.values.from}
-          options={destinations}
+          options={dep}
         />
         <SelectList
           key={"to"}
@@ -61,22 +61,23 @@ export const FlightSearchBar: FC<FlightSearchBarProps> = ({
           id="to"
           value={formik.values.to}
           getSelected={(selected) => formik.setFieldValue("to", selected)}
-          options={destinations}
+          options={arr}
         />
       </div>
       <div>
         <DatePicker
           type={formik.values.flightType}
-          getType={(val) => formik.setFieldValue("flightType", val)}
+          getType={"single"}
           selectedDates={formik.values.slectedDates}
-          getSelectedDates={(val) => formik.setFieldValue("slectedDates", val)}
+          getSelectedDates={(val: unknown) =>
+            formik.setFieldValue("slectedDates", val)
+          }
           name="travelingDate"
-          placeholder="Depart - Arrive"
+          placeholder="Date"
         />
         <PassengerList
           className="passenger-count"
           placeholder="1 adult"
-          // startIcon={<PersonIcon />}
           id="passengerCount"
           value={formik.values.passengerCount}
           getValue={(val) => formik.setFieldValue("passengerCount", val)}
@@ -90,14 +91,27 @@ export const FlightSearchBar: FC<FlightSearchBarProps> = ({
   );
 };
 
-const destinations = [
-  "NRT",
-  "PVG",
-  "STL",
-  "ATL",
-  "MSP",
-  "SFO",
-  "JFK",
-  "LAX",
-  "Label",
+const dep = [
+  "New York",
+  "Los Angeles",
+  "Chicago",
+  "Houston",
+  "San Francisco",
+  "London",
+  "Paris",
+  "Tokyo",
+  "Mumbai",
+  "Sydney",
+];
+const arr = [
+  "Toronto",
+  "Berlin",
+  "Madrid",
+  "Shanghai",
+  "São Paulo",
+  "Dubai",
+  "Mexico City",
+  "Singapore",
+  "Bangkok",
+  "Istanbul",
 ];

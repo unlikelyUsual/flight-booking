@@ -4,8 +4,8 @@ export const advanceSearch = z.object({
   body: z.object({
     origin: z.string(),
     destination: z.string(),
-    date: z.date().min(new Date(), { message: "Please enter valid date" }),
-    maxPrice: z.number().min(0, { message: "Please enter price" }),
+    date: z.string(),
+    // maxPrice: z.number().min(0, { message: "Please enter price" }),
     offset: z.number().default(0),
     limit: z.number().default(30),
   }),

@@ -1,11 +1,18 @@
+import { and, desc, eq, gt, gte, or } from "drizzle-orm";
 import { Request, Response } from "express";
-import { flights } from "../model/flight";
 import { db } from "../db";
-import { eq, desc, and, gt, lte, gte, or } from "drizzle-orm";
+import { flights } from "../model/flight";
 
 export const searchFlight = async (req: Request, res: Response) => {
   try {
-    const { origin, destination, date, maxPrice, offset, limit = 30 } = req.body;
+    const {
+      origin,
+      destination,
+      date,
+      maxPrice,
+      offset,
+      limit = 30,
+    } = req.body;
 
     const result = await db
       .select()
@@ -16,7 +23,7 @@ export const searchFlight = async (req: Request, res: Response) => {
           eq(flights.destination, destination as string),
           gte(flights.departure, new Date(date as string)),
           eq(flights.origin, origin as string),
-          lte(flights.price, maxPrice as string),
+          // lte(flights.price, maxPrice as string),
           gt(flights.availableSeats, 0)
         )
       )
@@ -38,7 +45,12 @@ export const getAllFlights = async (req: Request, res: Response) => {
     const result = await db
       .select()
       .from(flights)
-      .where(or(eq(flights.origin, origin as string), eq(flights.destination, destination as string)))
+      .where(
+        or(
+          eq(flights.origin, origin as string),
+          eq(flights.destination, destination as string)
+        )
+      )
       .orderBy(desc(flights.departure))
       .limit(limit as unknown as number)
       .offset(offset as unknown as number);
@@ -56,7 +68,11 @@ export const getFlightById = async (req: Request, res: Response) => {
 
     console.log("ID : ", id);
 
-    const [flight] = await db.select().from(flights).where(eq(flights.id, id)).limit(1);
+    const [flight] = await db
+      .select()
+      .from(flights)
+      .where(eq(flights.id, id))
+      .limit(1);
 
     if (!flight) {
       return res.status(404).json({ message: "Flight not found" });

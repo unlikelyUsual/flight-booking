@@ -1,6 +1,6 @@
+import { Flight } from "@shared/types";
 import { FC } from "react";
 import styles from "./FlightRow.module.scss";
-import { Flight } from "@shared/types";
 interface FlightRowProps {
   flight: Flight;
 }
@@ -18,13 +18,6 @@ export const FlightRow: FC<FlightRowProps> = ({ flight }) => {
       <div className={styles["times"]}>
         <p className={styles["duration"]}>{flight.duration}</p>
         <p className={styles["time"]}>{flight.time}</p>
-        <div className={styles["stops"]}>
-          {flight.stops?.map((ele, i) => (
-            <p key={"stop" + i}>
-              {ele.duration} in {ele.name}
-            </p>
-          ))}
-        </div>
       </div>
     </div>
   );
